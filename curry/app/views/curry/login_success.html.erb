@@ -1,1 +1,11 @@
-<h1>ログインに成功しました</h1>
+<h1>投稿一覧画面</h1>
+
+<ul>
+    <% @post.each do |post| %>
+        <li>
+            <%= post.content %>
+            <%= link_to("[編集]","/curry/#{post.id}/edit") %>
+        </li>
+    <% end %>
+    
+</ul>

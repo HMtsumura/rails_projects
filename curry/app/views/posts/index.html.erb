@@ -1,0 +1,15 @@
+<h1>投稿一覧画面</h1>
+<ul>
+  <li><%= link_to("新規投稿","/posts/new") %></li>
+  <li>投稿一覧</li>
+</ul>
+<ul>
+    <% @post.each do |post| %>
+        <li>
+            <%= post.content %>
+            <%= link_to("[編集]","/posts/#{post.id}/edit") %>
+            <%= link_to("[削除]","/posts/#{post.id}/destroy", {method: "post"}) %>
+        </li>
+    <% end %>
+    
+</ul>
