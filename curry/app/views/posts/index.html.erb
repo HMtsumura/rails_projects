@@ -1,4 +1,14 @@
 <h1>投稿一覧画面</h1>
+<% current_user = User.find_by(id: session[:user_id]) %>
+    <% if current_user %>
+    <li>
+      <%= current_user.name %>
+    </li>
+    <% else %>
+    <li>
+       ユーザーが特定できません 
+    <li>    
+    <% end %>
 <ul>
   <li><%= link_to("新規投稿","/posts/new") %></li>
   <li>投稿一覧</li>

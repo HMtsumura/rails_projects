@@ -1,11 +1,7 @@
 class CurryController < ApplicationController
   def index
-    
   end  
   
-  def show
-    
-  end
   
   def login
     @user = User.find_by(name: params[:name], password: params[:password])
@@ -21,20 +17,23 @@ class CurryController < ApplicationController
     end
   end
   
-
+  def new
+    @user = User.new  
+  end 
   
-  def edit
-    @post = Post.find_by(id: params[:id])
-  end  
-  
-  def update
-    @post = Post.find_by(id: params[:id])
-    @post.content = params[:content]
-    if @post.save
-      flash[:notice] = "投稿を編集しました"
-      redirect_to("/login_success")
+  def create
+    @user = User.new(
+      name: params[:name],
+      password: params[:password],
+      email: params[:email]
+      )
+    if @user.save
+      session[:user_id] = @user.id
+      flash[:notice] = "新規のユーザーを登録しました"
+      redirect_to("/posts/index")
     else
-      render("curry/edit")
+      render("curry/new")
     end  
-  end  
+  end
+  
 end

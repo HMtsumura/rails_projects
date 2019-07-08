@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :curry
   get "/" => 'curry#index'
+  get "/curry/new" => "curry#new"
+  post "/curry/create" => "curry#create"
   # get "curry/login_success" => 'curry#show'
   # get "curry/:id/edit" => "curry#edit"
   # post "curry/:id/update" => "curry#update"
