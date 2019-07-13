@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   get "curry/login_success" => 'curry#login_success'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   post "login" => "curry#login"
+  get "login" => "curry#login_form"
+  post "logout" =>  "curry#logout"
+  get "about" => "curry#about"
   
   get "posts/index" => "posts#index"
   get "posts/:id/edit" => "posts#edit"

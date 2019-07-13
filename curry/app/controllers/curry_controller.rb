@@ -1,8 +1,12 @@
 class CurryController < ApplicationController
   def index
   end  
+  def about
+  end
   
-  
+  def login_form
+  end
+
   def login
     @user = User.find_by(name: params[:name], password: params[:password])
     if @user
@@ -17,6 +21,12 @@ class CurryController < ApplicationController
       
     end
   end
+  
+  def logout
+    session[:user_id] = nil
+    flash[:notice] = "ログアウトしました"
+    redirect_to("/")
+  end    
   
   def new
     @user = User.new  
